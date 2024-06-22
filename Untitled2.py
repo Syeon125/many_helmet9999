@@ -5,7 +5,7 @@
     "colab": {
       "provenance": [],
       "gpuType": "T4",
-      "authorship_tag": "ABX9TyOG0zupzvoQZY6iiY7stxKz",
+      "authorship_tag": "ABX9TyNxd8xUN7k3z5PnSyoARrxJ",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -30,27 +30,25 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 7,
+      "execution_count": 12,
       "metadata": {
         "colab": {
-          "base_uri": "https://localhost:8080/"
+          "base_uri": "https://localhost:8080/",
+          "height": 147
         },
         "id": "wuhcDs5xULJ8",
-        "outputId": "bbe891d9-af81-4230-d76e-48bc9f068d3e"
+        "outputId": "1e871a2d-fd6e-4fda-8312-ca0962d5c748"
       },
       "outputs": [
         {
-          "output_type": "stream",
-          "name": "stdout",
-          "text": [
-            "\u001b[34m\u001b[1mdetect: \u001b[0mweights=['./runs/train/helmet_yolov5m/weights/last.pt'], source=/content/p4.jpg, data=data/coco128.yaml, imgsz=[640, 640], conf_thres=1.0, iou_thres=0.45, max_det=1000, device=, view_img=False, save_txt=False, save_csv=False, save_conf=False, save_crop=False, nosave=False, classes=None, agnostic_nms=False, augment=False, visualize=False, update=False, project=runs/detect, name=exp, exist_ok=False, line_thickness=3, hide_labels=False, hide_conf=False, half=False, dnn=False, vid_stride=1\n",
-            "YOLOv5 🚀 v7.0-330-gb20fa802 Python-3.10.12 torch-2.3.0+cu121 CUDA:0 (Tesla T4, 15102MiB)\n",
-            "\n",
-            "Fusing layers... \n",
-            "YOLOv5s summary: 157 layers, 7015519 parameters, 0 gradients, 15.8 GFLOPs\n",
-            "image 1/1 /content/p4.jpg: 640x640 (no detections), 11.5ms\n",
-            "Speed: 0.6ms pre-process, 11.5ms inference, 14.1ms NMS per image at shape (1, 3, 640, 640)\n",
-            "Results saved to \u001b[1mruns/detect/exp4\u001b[0m\n"
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'Image' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-12-0eca241f3f36>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mImage\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mos\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpath\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mjoin\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'/content/yolov5/runs/train/helmet_yolov5m2/weights/best.pt'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mos\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpath\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mbasename\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mval_img_path\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'Image' is not defined"
           ]
         }
       ],
@@ -120,7 +118,12 @@
         "%cd /content/yolov5\n",
         "!python train.py  --img 640 --batch 16 --epochs 100 --data /content/dataset/With-Helmet-8/data.yaml --cfg /content/yolov5/models/yolov5s.yaml --weights yolov5m.pt --name helmet_yolov5m\n",
         "\n",
-        "!python detect.py --weights ./runs/train/helmet_yolov5m/weights/last.pt --conf 1 --source /content/p4.jpg\n"
+        "!python detect.py --weights ./runs/train/helmet_yolov5m2/weights/best.pt --conf 1 --source /content/p4.jpg\n",
+        "\n",
+        "Image(os.path.join('/content/yolov5/runs/train/helmet_yolov5m2/weights/best.pt', os.path.basename(val_img_path)))\n",
+        "\n",
+        "\n",
+        "\n"
       ]
     }
   ]
